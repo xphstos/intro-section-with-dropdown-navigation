@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Intro section with dropdown navigation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./scss/style.scss" />
+    <script src="./index.js" defer></script>
+  </head>
+  <body>
+    <include src="./partials/header.html"></include>
+    <main class="main">
+      <section class="section section--remote">
+        <picture class="section__graphic">
+          <source
+            media="(max-width: 870px)"
+            srcset="./images/image-hero-mobile.png"
+          />
+          <source
+            media="(min-width: 871px)"
+            srcset="./images/image-hero-desktop.png"
+          />
+          <img
+            src="./images/image-hero-desktop.png"
+            alt=""
+            role="presentation"
+          />
+        </picture>
+        <header class="section__header">
+          <h1 class="section__title">Make remote work</h1>
+          <p class="section__subtitle">
+            Get your team in sync, no matter your location. Streamline
+            processes, create team rituals, and watch productivity soar.
+          </p>
+          <a class="section__more"> Learn more </a>
+          <include src="partials/clients.html"></include>
+        </header>
+      </section>
+    </main>
+  </body>
+</html>

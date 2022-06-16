@@ -1,0 +1,46 @@
+<header class="header">
+  <a href="/" class="header__home">
+    <icon src="./images/logo.svg" class="logo"></icon>
+  </a>
+  <input
+    type="checkbox"
+    aria-label="mobile menu toggle"
+    class="toggle header__toggle"
+  />
+  <nav class="nav header__nav">
+    <ul class="nav-menu">
+      <li class="nav-menu__item nav-menu__item--with-submenu">
+        <button class="nav-menu__link">
+          Features
+          <icon
+            src="./images/icon-arrow-down.svg"
+            class="nav-menu__link-icon"
+          ></icon>
+        </button>
+        <include src="partials/features-submenu.html"></include>
+      </li>
+      <li class="nav-menu__item nav-menu__item--with-submenu">
+        <button class="nav-menu__link">
+          Company
+          <icon
+            src="./images/icon-arrow-down.svg"
+            class="nav-menu__link-icon"
+          ></icon>
+        </button>
+        <include src="partials/company-submenu.html"></include>
+      </li>
+      <li class="nav-menu__item">
+        <a class="nav-menu__link"> Careers </a>
+      </li>
+      <li class="nav-menu__item">
+        <a class="nav-menu__link"> About </a>
+      </li>
+      <li class="nav-menu__item">
+        <a class="nav-menu__link nav-menu__link--as-button"> Login </a>
+      </li>
+      <li class="nav-menu__item">
+        <a class="nav-menu__link nav-menu__link--as-button"> Register </a>
+      </li>
+    </ul>
+  </nav>
+</header>

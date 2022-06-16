@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 2.5rem;
+
+  @media screen and (max-width: 1190px) {
+    padding: 1.5rem;
+  }
+
+  &__home {
+    display: inline-flex;
+    align-items: flex-end;
+    flex: 0 1 4.5rem;
+
+    .logo {
+      width: 4.5rem;
+    }
+  }
+
+  &__nav {
+    flex: 1;
+  }
+}

@@ -1,0 +1,206 @@
+@use "sass:color" as *;
+@use "../functions" as *;
+@use "../helpers" as *;
+
+.nav {
+  @media screen and (max-width: 870px) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    min-height: fill-available;
+    display: flex;
+    justify-content: flex-end;
+    background-color: adjust(c("off-black"), $alpha: -0.25);
+    opacity: 0;
+    transition: opacity 0.3s ease 0.3s;
+    pointer-events: none;
+
+    @at-root {
+      .toggle:checked {
+        ~ .nav {
+          opacity: 1;
+          pointer-events: auto;
+
+          .nav-menu {
+            opacity: 1;
+            transform: translateX(var(--scrollbar-size));
+          }
+        }
+      }
+    }
+  }
+}
+
+/*=================================
+=            MAIN MENU            =
+==================================*/
+
+.nav-menu {
+  --scrollbar-size: 0;
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 870px) {
+    background-color: v("white");
+    display: block;
+    padding: v("header-height") 1.5rem;
+    width: min(20rem, 90vw);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(100%);
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  &__item {
+    position: relative;
+
+    &:nth-child(5) {
+      margin-left: auto;
+
+      @media screen and (max-width: 870px) {
+        margin-top: 1rem;
+      }
+
+      > .nav-menu__link--as-button {
+        @extend %btn--clear;
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      .nav-menu__link-icon {
+        transform: translateY(-0.05em) scaleY(-1);
+      }
+
+      .nav-submenu {
+        opacity: 1;
+        pointer-events: auto;
+
+        @media screen and (max-width: 870px) {
+          display: block;
+        }
+      }
+    }
+
+    &--with-submenu {
+      .nav-menu__link {
+        border: 0;
+        background: none;
+      }
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: opacity 0.3s ease;
+    white-space: no-wrap;
+
+    @media screen and (max-width: 870px) {
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &:not(.nav-menu__link--as-button) {
+      opacity: 0.75;
+    }
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+
+    &-icon {
+      flex: 0 0 0.875rem;
+      width: 0.875em;
+      height: auto;
+      transition: 0.2s ease;
+      transform: translateY(-0.05em);
+    }
+
+    &--as-button {
+      @extend %btn;
+      @extend %btn--outlined;
+
+      @media screen and (max-width: 870px) {
+        display: flex;
+      }
+    }
+  }
+}
+
+/*=====  End of MAIN MENU  ======*/
+
+/*===============================
+=            SUBMENU            =
+================================*/
+.nav-submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: v("white");
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem adjust(c("off-black"), $alpha: -0.9);
+  pointer-events: none;
+  opacity: 0;
+
+  @media screen and (max-width: 870px) {
+    position: static;
+    pointer-events: auto;
+    display: none;
+    opacity: 1;
+    padding: 0.5rem 1rem;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  &:hover {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1em;
+    font-size: 0.875rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: opacity 0.3s ease;
+    opacity: 0.75;
+    white-space: nowrap;
+    padding: 0.5rem 0;
+
+    @media screen and (max-width: 870px) {
+      padding: 0.75rem 1rem;
+    }
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+
+    &-icon {
+      flex: 0 0 1rem;
+      width: 1em;
+      height: auto;
+      transform: translateY(-0.05em);
+    }
+  }
+}
+
+/*=====  End of SUBMENU  ======*/
